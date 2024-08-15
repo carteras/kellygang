@@ -19,13 +19,10 @@ ENV GITHUB_TOKEN=${GITHUB_TOKEN}
 
 RUN git clone https://${GITHUB_TOKEN}:x-oauth-basic@github.com/carteras/bushranger-kellygang.git /opt/ansible-playbook
 
-
-
 # Run all .yml files in /opt/ansible-playbook
 RUN for playbook in /opt/ansible-playbook/bushranger-kellygang/*.yml; do \
     ansible-playbook -i localhost, $playbook --connection=local; \
     done
-
 
 # Expose SSH port
 EXPOSE 22
